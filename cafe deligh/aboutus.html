@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Cafe Delight</title>
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffaf0;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgb(160, 9, 22), #6b0f1a);
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      opacity: 0;
+      transform: translateY(-30px);
+      animation: fadeInDown 1.2s ease forwards;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      font-weight: 300;
+    }
+
+    .about-section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s ease forwards 0.5s;
+    }
+
+    .about-section h2 {
+      font-size: 2.5em;
+      color: #4b3832;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .about-section h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: rgb(160, 9, 22);
+      margin: 8px auto;
+      border-radius: 2px;
+    }
+
+    .about-section p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin: 15px 0;
+      color: #444;
+    }
+
+    .about-image {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 25px auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .about-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: linear-gradient(135deg, rgb(160, 9, 22), #6b0f1a);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95em;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.2s ease forwards 1s;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+      .about-section h2 {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to Cafe Delight</h1>
+    <p>Where every cup tells a story ☕</p>
+  </header>
+
+  <section class="about-section">
+    <h2>About Us</h2>
+    <img src="cafe logo2.jpg" alt="Inside our cozy cafe" class="about-image" />
+
+    <p>
+      Founded in 2025, <strong>Cafe Delight</strong> was born out of a passion for great coffee, fresh pastries, and cozy community vibes. Located in the heart of [Your City], we serve hand-crafted drinks, delicious local food, and a welcoming space for everyone.
+    </p>
+
+    <p>
+      Whether you're catching up with a friend, working remotely, or just grabbing your daily brew, our team is here to make sure your experience is warm and memorable.
+    </p>
+
+    <p>
+      Our mission is simple: bring people together over great coffee and great conversation.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Cafe Delight. All rights reserved.
+  </footer>
+
+</body>
+</html>

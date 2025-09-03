@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Gallery</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background:#f5dbba;
+      color: #333;
+    }
+
+    /* ==== GALLERY SECTION ==== */
+    .gallery {
+      padding: 60px 20px;
+      text-align: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #642a03;
+      font-weight: bold;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Overlay */
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 500;
+      transition: height 0.4s ease;
+    }
+
+    .gallery-item:hover .overlay {
+      height: 40%;
+    }
+
+    /* ==== LIGHTBOX ==== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0px 4px 30px rgba(0,0,0,0.6);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      padding: 10px;
+      user-select: none;
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0,0,0,0.7);
+    }
+
+    .prev-btn { left: 30px; }
+    .next-btn { right: 30px; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .gallery h2 { font-size: 2rem; }
+      .overlay { font-size: 1rem; }
+      .nav-btn { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==== GALLERY SECTION ==== -->
+  <section class="gallery">
+    <h2>Our Café Ambience</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="int.jpg" alt="Café Interior">
+        <div class="overlay">Café Interior</div>
+      </div>
+      <div class="gallery-item">
+        <img src="count.jpg" alt="Reception">
+        <div class="overlay">Reception / Counter</div>
+      </div>
+      <div class="gallery-item">
+        <img src="area.jpg" alt="Seating Area">
+        <div class="overlay">Seating Area</div>
+      </div>
+      <div class="gallery-item">
+        <img src="kitchen.jpg" alt="Kitchen">
+        <div class="overlay">Kitchen</div>
+      </div>
+      <div class="gallery-item">
+        <img src="decor.jpg" alt="Decor">
+        <div class="overlay">Decor & Lights</div>
+      </div>
+      <div class="gallery-item">
+        <img src="cozy.jpg" alt="Ambience">
+        <div class="overlay">Cozy Ambience</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==== LIGHTBOX ==== -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-btn">&times;</span>
+    <span class="nav-btn prev-btn">&#10094;</span>
+    <img src="" alt="Expanded view">
+    <span class="nav-btn next-btn">&#10095;</span>
+  </div>
+
+  <script>
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+    const closeBtn = document.querySelector(".close-btn");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+
+    let currentIndex = 0;
+
+    // Open Lightbox
+    galleryItems.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        currentIndex = index;
+        showImage();
+        lightbox.classList.add("active");
+      });
+    });
+
+    // Close Lightbox
+    closeBtn.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+
+    // Show Image
+    function showImage() {
+      let largeImg = galleryItems[currentIndex].src.replace("w=800", "w=1600");
+      lightboxImg.src = largeImg;
+    }
+
+    // Next & Previous
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      showImage();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      showImage();
+    });
+
+    // Close on background click
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("active");
+      }
+    });
+  </script>
+
+</body>
+</html>

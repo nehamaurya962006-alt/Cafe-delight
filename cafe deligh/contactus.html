@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        .contact {
+    background: linear-gradient(135deg, #fff8f0, #fcefe3);
+    padding: 60px 0;
+    text-align: center;
+}
+.contact-subtitle {
+    font-size: 1rem;
+    color: #6b4f3a;
+    margin-bottom: 40px;
+}
+.contact-wrapper {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.contact-info-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 350px;
+    text-align: left;
+}
+.contact-info-card h3 {
+    font-size: 1.1rem;
+    color: #6b4f3a;
+    margin-top: 15px;
+}
+.contact-info-card p {
+    color: #444;
+    margin-bottom: 10px;
+}
+.contact-info-card i {
+    margin-right: 8px;
+    color: #c47b59;
+}
+.contact-info-card .social-links {
+    margin-top: 15px;
+}
+.contact-info-card .social-links a {
+    font-size: 1.3rem;
+    color: #c47b59;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+.contact-info-card .social-links a:hover {
+    color: #8b5e3c;
+}
+.contact-form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+}
+.contact-form .form-group {
+    margin-bottom: 15px;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #c47b59;
+    outline: none;
+    box-shadow: 0 0 5px rgba(196, 123, 89, 0.4);
+}
+  
+
+.submit-btn {
+    background: #c47b59;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+.submit-btn:hover {
+    background: #8b5e3c;
+}
+
+
+
+    </style>
+</head>
+<body>
+     <!-- Contact Section -->
+    <!-- Contact Section -->
+    <section id="contact" class="contact scroll-animation">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="contact-subtitle">We’d love to hear from you! Whether you have a question, feedback, or just want to say hi.</p>
+    
+            <div class="contact-wrapper">
+                <!-- Contact Info -->
+                <div class="contact-info-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Visit Us</h3>
+                    <p>123 Coffee Street, Roast City</p>
+    
+                    <h3><i class="fas fa-phone-alt"></i> Call Us</h3>
+                    <p>+1 234 567 890</p>
+    
+                    <h3><i class="fas fa-envelope"></i> Email Us</h3>
+                    <p>info@cafedelight.com</p>
+    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+    
+                <!-- Contact Form -->
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe Delight | Add to Cart</title>
+<style>
+    body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fdf8f4;
+        color: #333;
+    }
+
+    header {
+        background: #8B4513;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .cart-container {
+        max-width: 1000px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #6B4226;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background: #f4e6d9;
+    }
+
+    .item-image {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .quantity-input {
+        width: 50px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .total-section {
+        text-align: right;
+        margin-top: 20px;
+        font-size: 1.2rem;
+    }
+
+    .checkout-btn {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        background: #8B4513;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: 0.3s;
+    }
+
+    .checkout-btn:hover {
+        background: #5c2f1c;
+    }
+
+    /* Popup */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popup-content {
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        text-align: center;
+        width: 300px;
+    }
+
+    .popup-content h3 {
+        margin-bottom: 15px;
+    }
+
+    .popup-content button {
+        padding: 10px 18px;
+        background: #8B4513;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .popup-content button:hover {
+        background: #5c2f1c;
+    }
+
+    @media (max-width: 768px) {
+        .item-image {
+            width: 60px;
+            height: 60px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>Cafe Delight</header>
+
+<div class="cart-container">
+    <h2>Your Cart</h2>
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Item</th>
+            <th>Price (₹)</th>
+            <th>Quantity</th>
+            <th>Subtotal (₹)</th>
+        </tr>
+        <tr>
+            <td><img src="cake.jpg" alt="Chocolate Cake" class="item-image"></td>
+            <td>Chocolate Cake</td>
+            <td>120</td>
+            <td><input type="number" class="quantity-input" value="1" min="0" onchange="updateTotal()"></td>
+            <td class="subtotal">120</td>
+        </tr>
+        <tr>
+            <td><img src="lemontea.jpg" alt="Coffee Latte" class="item-image"></td>
+            <td>Coffee Latte</td>
+            <td>80</td>
+            <td><input type="number" class="quantity-input" value="1" min="0" onchange="updateTotal()"></td>
+            <td class="subtotal">80</td>
+        </tr>
+        <tr>
+            <td><img src="lemon.jpg" alt="Green Tea" class="item-image"></td>
+            <td>Green Tea</td>
+            <td>60</td>
+            <td><input type="number" class="quantity-input" value="0" min="0" onchange="updateTotal()"></td>
+            <td class="subtotal">0</td>
+        </tr>
+        <tr>
+            <td><img src="masala.jpg" alt="Masala Tea" class="item-image"></td>
+            <td>Masala Tea</td>
+            <td>50</td>
+            <td><input type="number" class="quantity-input" value="0" min="0" onchange="updateTotal()"></td>
+            <td class="subtotal">0</td>
+        </tr>
+        <tr>
+            <td><img src="patties.jpg" alt="Patties" class="item-image"></td>
+            <td>Patties</td>
+            <td>40</td>
+            <td><input type="number" class="quantity-input" value="0" min="0" onchange="updateTotal()"></td>
+            <td class="subtotal">0</td>
+        </tr>
+        <tr>
+            <td><img src="sandwitch.jpg" alt="Sandwich" class="item-image"></td>
+            <td>Sandwich</td>
+            <td>70</td>
+            <td><input type="number" class="quantity-input" value="0" min="0" onchange="updateTotal()"></td>
+            <td class="subtotal">0</td>
+        </tr>
+        <tr>
+            <td><img src="pasta.jpg" alt="Pasta" class="item-image"></td>
+            <td>Pasta</td>
+            <td>150</td>
+            <td><input type="number" class="quantity-input" value="0" min="0" onchange="updateTotal()"></td>
+            <td class="subtotal">0</td>
+        </tr>
+    </table>
+
+    <div class="total-section">
+        <strong>Total: ₹<span id="total">200</span></strong>
+    </div>
+
+    <button class="checkout-btn" onclick="showPopup()">Proceed to Checkout</button>
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <h3>Thank you for your order!</h3>
+        <p>Your order is being processed.</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<script>
+    function updateTotal() {
+        let rows = document.querySelectorAll("table tr");
+        let total = 0;
+        for (let i = 1; i < rows.length; i++) {
+            let price = parseInt(rows[i].cells[2].textContent);
+            let qty = parseInt(rows[i].querySelector(".quantity-input").value);
+            let subtotal = price * qty;
+            rows[i].querySelector(".subtotal").textContent = subtotal;
+            total += subtotal;
+        }
+        document.getElementById("total").textContent = total;
+    }
+
+    function showPopup() {
+        document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

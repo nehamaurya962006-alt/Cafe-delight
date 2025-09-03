@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delight Cafe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fffaf4;
+            color: #333;
+        }
+
+
+        .hero-img {
+    background-image: url("hero2.jpg");
+    height: 350px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+        /* ===== HEADER NAV ===== */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #4a2c2a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+                    background-image: url("cafe logo2.jpg"); /* Remove the backslash in file name */
+                    background-size: cover;
+                    height: 70px;
+                    width: 70px;
+                }
+        .links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .links a:hover {
+            color: #f9c74f;
+        }
+        .nav-cart {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .nav-cart a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-cart i {
+            font-size: 1rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            width: 100%;
+            height: 60vh;
+            background: url('hero.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            color:#774010;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ===== PANEL ICONS ===== */
+        .panel {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px 0;
+            background: #f1e3d3;
+        }
+        .panel div {
+            font-size: 18px;
+            color: #4a2c2a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .panel div:hover {
+            transform: translateY(-5px);
+            color: #c77d3b;
+        }
+
+        /* ===== SHOP SECTIONS ===== */
+        .shop-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 1.5s ease forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .box {
+            width: 220px;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .box-img {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+        .box:hover .box-img {
+            transform: scale(1.1);
+        }
+        .box-content {
+            text-align: center;
+            padding: 15px;
+        }
+        .box-content h2 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .box-content p {
+            color: #c77d3b;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .box-content p:hover {
+            color: #4a2c2a;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #4a2c2a;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .foot-panel1 a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+        .foot-panel2 {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+        .foot-panel2 ul p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .foot-panel2 a {
+            display: block;
+            margin: 5px 0;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .foot-panel2 a:hover {
+            color: #f9c74f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="nav-bar">
+            <div class="logo">
+                
+            </div>
+            <div class="links">
+                <a href="aboutus.html">About Us</a>
+                <a href="menu.html">Menu</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contactus.html">Contact Us</a>
+                <div class="nav-cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="cart.html">Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Welcome to Cafe Delight</h1>
+            <div class="hero-img"></div>
+        </div>
+
+        <!-- Panel -->
+        <div class="panel">
+            <div><i class="fa-solid fa-mug-hot"></i> Hot Tea</div>
+            <div><i class="fa-solid fa-cake-candles"></i> Cake</div>
+            <div><i class="fa-solid fa-burger"></i> Burger</div>
+            <div><i class="fa-solid fa-ice-cream"></i> Ice Cream</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Shop Section 1 -->
+        <div class="shop-section">
+            <div class="box">
+                <div class="box-content">
+                    <h2>Coffee</h2>
+                    <div class="box-img" style="background-image: url('coldcoffee.jpg');"></div>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-content">
+                    <h2>Boba Tea</h2>
+                    <div class="box-img" style="background-image: url('boba.jpg');"></div>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-content">
+                    <h2>Lemon Tea</h2>
+                    <div class="box-img" style="background-image: url('lemontea.jpg');"></div>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-content">
+                    <h2>Milk Shake</h2>
+                    <div class="box-img" style="background-image: url('milkshak.jpg');"></div>
+                    <p>See more</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shop Section 2 -->
+        <div class="shop-section">
+            <div class="box">
+                <div class="box-content">
+                    <h2>Cheese Cake</h2>
+                    <div class="box-img" style="background-image: url('cheesecake.jpg');"></div>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-content">
+                    <h2>Waffle</h2>
+                    <div class="box-img" style="background-image: url('waffles.jpg');"></div>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-content">
+                    <h2>Patties</h2>
+                    <div class="box-img" style="background-image: url('potato patties.jpg');"></div>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-content">
+                    <h2>Red Sauce Pasta</h2>
+                    <div class="box-img" style="background-image: url('Red souce pasta.jpg');"></div>
+                    <p>See more</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="foot-panel1">
+            <a href="#">Back to Top</a>
+        </div>
+
+        <div class="foot-panel2">
+            <ul>
+                <p>Our Cafe</p>
+                <a href="#">About Us</a>
+                <a href="#">Franchise</a>
+                <a href="#">Blog</a>
+            </ul>
+            <ul>
+                <p>Customer Service</p>
+                <a href="#">Contact</a>
+                <a href="#">FAQs</a>
+                <a href="#">Help</a>
+            </ul>
+            <ul>
+                <p>Connect With Us</p>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">YouTube</a>
+            </ul>
+            <ul>
+                <p>Legal</p>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+            </ul>
+        </div>
+
+        <div class="foot-panel4">
+            <div class="pages">
+                <a href="#">Conditions of Use</a>
+                <a href="#">Privacy Notice</a>
+                <a href="#">Your Privacy Choices</a>
+            </div>
+            <div class="copyright">
+                © 2025 Delight Cafe. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
